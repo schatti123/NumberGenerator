@@ -1,0 +1,27 @@
+version: "1"
+project:
+    name: "CodeBuildPOCWithCli"
+    branch: "master"
+    revision:
+        name: "1"
+        modified: true
+        date: "2016-08-24T12:00:00Z"
+install:
+     coverity:
+         version: 2018.06
+capture:
+     build:
+         compilers:
+             - compiler: javac
+     cleanCommands:
+         - shell: ["mvn","-f", "pom.xml","-DskipTests","clean"]
+     buildCommands:
+         - shell: ["mvn","-f", "pom.xml","-DskipTests","package"]
+     fileSystem:
+        javascript:
+            files:
+                - file: src/js/a.js
+        ears:
+            files:
+                - file: src/ears/ea.ear
+
