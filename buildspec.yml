@@ -10,7 +10,7 @@ phases:
   build:
     commands:
       - echo Build started on `date`
-      - swip_cli analyze -w | tee output.txt
+      - swip_cli analyze -w -- mvn clean package -DskipTests | tee output.txt
   post_build:
     commands:
       - grep -A 8 "Job issue summary of job" output.txt > issue_summary.txt
