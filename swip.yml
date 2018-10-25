@@ -16,7 +16,7 @@ capture:
      cleanCommands:
          - shell: ["mvn","-f", "pom.xml","-DskipTests","clean"]
      buildCommands:
-         - shell: ["mvn","-f", "pom.xml","-DskipTests","package"]
+         - shell: ["mvn","-f", "pom.xml","-DskipTests","clean","package"]
      fileSystem:
         javascript:
             files:
