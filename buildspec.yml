@@ -1,0 +1,22 @@
+version: 0.2
+
+phases:
+  install:
+    commands:
+      - echo Nothing to do in the install phase...
+  pre_build:
+    commands:
+      - echo Nothing to do in the pre_build phase...
+  build:
+    commands:
+      - echo Build started on `date`
+      - swip_cli analyze -w | tee output.txt
+  post_build:
+    commands:
+      - grep -A 8 "Job issue summary of job" output.txt > issue_summary.txt
+      - mkdir /job_output
+      - mv issue_summary.txt /job_output
+artifacts:
+  files:
+    - /job_output/**/* 
+  discard-paths: no
